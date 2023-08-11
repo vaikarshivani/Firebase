@@ -15,11 +15,18 @@ pipeline {
             }
         }
         
-        stage('Build with Maven') {
+        stages {
+        stage('Build') {
             steps {
-                sh 'mvn -B clean install'
+                script {
+                    def mvnHome = tool name: 'Maven', type: 'hudson.tasks.Maven$MavenInstallation'
+                    def mvnCmd = "${mvnHome}/bin/mvn"
+
+                    sh "${mvnCmd} -B clean install"
+                }
             }
         }
+    }
         
         stage('Store artifact') {
             steps {
