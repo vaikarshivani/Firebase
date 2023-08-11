@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
     
@@ -15,7 +14,6 @@ pipeline {
             }
         }
         
-        stages {
         stage('Build') {
             steps {
                 script {
@@ -26,7 +24,6 @@ pipeline {
                 }
             }
         }
-    }
         
         stage('Store artifact') {
             steps {
