@@ -25,8 +25,10 @@ pipeline {
                 script {
                     def mvnHome = tool name: 'Maven', type: 'hudson.tasks.Maven$MavenInstallation'
                     def mvnCmd = "${mvnHome}/bin/mvn"
-
-                    sh "${mvnCmd} -B clean install toekn/pom.xml"
+                    
+                    dir('token') {
+                        sh "${mvnCmd} -B clean install"
+                    }
                 }
             }
         }
