@@ -1,4 +1,3 @@
-def mavenCMD = "D:\\Software installed files\\apache-maven\\apache-maven-3.8.8\\bin\\mvn"
 
 pipeline {
     agent any
@@ -18,7 +17,7 @@ pipeline {
         
         stage('Build with Maven') {
             steps {
-                sh "${mavenCMD} -B clean install"
+                sh 'mvn -B clean install'
             }
         }
         
