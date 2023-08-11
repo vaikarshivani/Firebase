@@ -13,6 +13,12 @@ pipeline {
                 tool name: 'JDK 17', type: 'jdk'
             }
         }
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+             }
+        }
+
         
         stage('Build') {
             steps {
@@ -20,7 +26,7 @@ pipeline {
                     def mvnHome = tool name: 'Maven', type: 'hudson.tasks.Maven$MavenInstallation'
                     def mvnCmd = "${mvnHome}/bin/mvn"
 
-                    sh "${mvnCmd} -B clean install"
+                    sh "${mvnCmd} -B clean install toekn/pom.xml"
                 }
             }
         }
